@@ -1,9 +1,11 @@
-/**
- * Created by Sagar on 1/30/2017.
- */
-public class WeekdayTest2 {
-    public static void main()
-    {
-        Weekday testday = Weekday.MONDAY;
-        System.out.println(testday);
-    }
+//import org.junit.*;
+//
+///**
+// * Created by Sagar on 1/30/2017.
+// */
+//public class WeekdayTest {
+//    @org.junit.Test
+//    public void testcase1(){
+//
+//    }
+//}

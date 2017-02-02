@@ -7,11 +7,11 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        CourseInstructorTest.class,
+        //CourseInstructorTest.class,
         //CourseTest.class,
-        TimeInstructorTest.class,
+        //TimeInstructorTest.class,
         //TimeTest.class,
-        WeekdayInstructorTest.class,
+        //WeekdayInstructorTest.class,
         //WeekdayTest.class
 })
 public class ScheduleTestSuit {

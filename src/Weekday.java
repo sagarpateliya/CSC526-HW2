@@ -1,6 +1,7 @@
 import java.awt.datatransfer.StringSelection;
+import java.time.temporal.WeekFields;
 
-public enum Weekday {
+public enum Weekday  {
 
     MONDAY("M"), TUESDAY("T"), WEDNESDAY("W"), THURSDAY("R"), FRIDAY("F");
 
@@ -12,6 +13,8 @@ public enum Weekday {
 
         this.days=days;
     }
+
+
 
     public static Weekday fromString(String s){
         if (s.toLowerCase().equals("m")){
