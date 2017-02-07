@@ -12,6 +12,7 @@ public class Time implements Cloneable {
         this.PM = PM;
    }
 
+
     public static Time  fromString(String str){
         //12:03 PM
         String hours = str.substring(0,2);
@@ -36,11 +37,39 @@ public class Time implements Cloneable {
             return copy;
     }
 
-        public int compareTo(int t){
-            return t;
+        public int compareTo(Time t){
+            int h1 = this.getHour();
+            int h2 = t.getHour();
+            if(h1 == 12){
+                h1 = 0;
+            }
+            if (h2 == 12){
+                h2 = 0;
+            }
+
+            if (this.PM == t.PM){
+               if( this.hour == t.hour){
+                   if (this.minutes == t.minutes){
+                       return 0;
+                   }else if(this.minutes<t.minutes){
+                       return -1;
+                   }else{
+                       return 1;
+                   }
+               }else if (h1<h2){
+                   return -1;
+
+                }else{
+                   return 1;
+               }
+
+            }else if (this.PM && !t.PM){
+                return 1;
+            }else {
+                return -1;
+            }
 
 
-        }
 
     @Override
     public boolean equals(Object obj) {

@@ -1,17 +1,20 @@
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * Created by Sagar on 2/1/2017.
  */
-public class Course extends  {
+public class Course {
 
         private String name;
         private int credits;
         private int duration;
         private Time startTime;
-        private Weekday days;
+        private Set<Weekday> days;
         private String course;
         private int hour;
 
-         Course (String name,int credits,int duration,Time startTime,Weekday days){
+         Course (String name,int credits,int duration,Time startTime,Set<Weekday> days){
 
              this.name = name;
              this.credits = credits;
@@ -24,12 +27,22 @@ public class Course extends  {
                  throw new IllegalArgumentException("Error");
 
              }
-        public boolean conflictsWith(int duration,Time startTime,Weekday days,Object o) {
-                if (o !=null){
-                  days other = (days) o; && startTime other = (duration) o;
+        public boolean conflictsWith(Course c) {
 
+            Iterator<Weekday> wd = c.getDays().iterator();
+                while (wd.hasNext()){
+                    Weekday days = wd.next();
+                    if (this.days.contains(days)){
+                        if(this.startTime.compareTo(c.getEndTime())<0 && c.startTime.compareTo(this.getEndTime())<0){
+                            return true;
+                        }
+                    }
                 }
-                return  false;
+            return false;
+        }
+
+        public Set<Weekday> getDays(){
+             return days;
         }
         public boolean contains(Weekday days,Time startTime,Object o1){
              if (o1 !=null){
@@ -38,6 +51,11 @@ public class Course extends  {
              }
              return false;
         }
+    public Time getEndTime(){
+        Time t = this.startTime.clone();
+        t.shift(duration);
+        return t;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -47,6 +65,7 @@ public class Course extends  {
         }
             return false;
         }
+
 
 
       public int getCredits (){
